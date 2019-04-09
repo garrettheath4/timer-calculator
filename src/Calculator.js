@@ -1,48 +1,74 @@
 import React, { Component } from 'react';
 import * as classNames from 'classnames';
+import moment from 'moment';
+import './Calculator.css';
 
 class Calculator extends Component {
   render() {
+    const {
+      answer,
+    } = this.state;
+
     return (
-      <form>
+      <form className="calculator">
         <div>
-          <label htmlFor="delay">Delay</label>
+          <label className="delayLabel" htmlFor="delay">Delay:</label>
           <input
               autoFocus
               tabIndex={1}
               type="text"
               onChange={this.handleChange.bind(this, 'delay')}
-              className="form-control"
+              className="delayLabel"
               id="delay"
-              placeholder="Username" />
+              placeholder="minutes"
+          />
         </div>
         <div>
-          <label htmlFor="submit">Calculate</label>
           <button
               id="submit"
               tabIndex={2}
               type="submit"
               onClick={this.submit.bind(this)}
-              className={classNames("btn", "btn-primary")}>Login
+              className={classNames("btn", "btn-primary", "calculate")}
+          >
+            Calculate
           </button>
         </div>
+        {answer && <div className="answer">{answer}</div>}
       </form>
     );
   }
 
-  handleChange(propName, event: React.FormEvent<HTMLInputElement>) {
-    const input = event.target as HTMLInputElement;
+  constructor(props) {
+    super(props);
+    this.state = {
+      delay: "0",
+      answer: undefined,
+    };
+  }
 
-    this.setState({ [propName]: input.value });
+  handleChange(propName, event: React.FormEvent<HTMLInputElement>) {
+    const input = event.target;
+
+    this.setState({
+      ...this.state,
+      [propName]: input.value
+    });
   }
 
   submit(e) {
     e.preventDefault();
 
-    const loginRequest = {...this.state};
+    const minutesToAdd = parseInt(this.state.delay);
+    const calculatedTime = moment().add(minutesToAdd, 'minutes').format("h:mm a");
 
-    this.props.login(loginRequest);
+    this.setState({
+      ...this.state,
+      answer: calculatedTime,
+    });
   }
 }
 
 export default Calculator;
+
+/* vim: set ts=2 sw=2 sta sts=2 sr et ai: */

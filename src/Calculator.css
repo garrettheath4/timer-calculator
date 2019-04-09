@@ -1,0 +1,19 @@
+.calculator {
+	margin-top: 20px;
+	font-size: xx-large;
+}
+
+.delayLabel {
+	margin-right: 6px;
+	font-size: inherit;
+}
+
+.calculate {
+	margin-top: 15px;
+	font-size: inherit;
+}
+
+.answer {
+	margin-top: 20px;
+	font-size: inherit;
+}
