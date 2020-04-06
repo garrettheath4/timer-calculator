@@ -4,13 +4,13 @@
   "private": true,
   "homepage": "http://garrettheath4.github.io/timer-calculator",
   "dependencies": {
-    "ajv": "^6.10.0",
+    "ajv": "^6.12.0",
     "classnames": "^2.2.6",
     "hoek": "^6.1.3",
     "moment": "^2.24.0",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
-    "react-scripts": "^3.3.0"
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-scripts": "^3.4.1"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -21,7 +21,7 @@
     "deploy": "gh-pages -d build"
   },
   "devDependencies": {
-    "gh-pages": "^2.0.1"
+    "gh-pages": "^2.2.0"
   },
   "browserslist": [
     ">0.2%",
